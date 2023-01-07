@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
+// class App extends Component {
+function App() {
+  // render() {
     return (
       <div className="App">
         <header className="App-header">
@@ -22,7 +24,7 @@ class App extends Component {
         </header>
       </div>
     );
-  }
+  // }
 }
 
 export default App;
