@@ -10,18 +10,40 @@ function App() {
 	}
 	
 	return (
-		<div>
+		<div className="App">
 			<h4>Super Converter</h4>
 			<select onChange={onSelectChange}>
 				<option value="xx">Select your units</option>
 				<option value="0">Minutes to Hours</option>
 				<option value="1">Km to Miles</option>
 			</select>
-			<hr/>
+			<hr />
 			{index === "xx" ? "Please select your units" : null}
 			{index === "0" ? <MinutesToHours /> : null}
 			{index === "1" ? <KmToMiles/> : null}
+			<hr />
+			<CustomButton banana="Save Changes" big={true}/>
+			<CustomButton banana="Continue" big={false}/>
 		</div>
+	);
+}
+
+// function CustomButton(props) {
+function CustomButton({banana, big}) {
+	console.log(banana, big);
+	return (
+		<button 
+			style= {{
+				backgroundColor: "tomato",
+				color: "white",
+				padding: "10px 20px",
+				border: 0,
+				borderRadius: big ? 20 : 10,
+				fontSize : big ? 18 : 16,
+			}}
+		>
+			{banana}
+		</button>
 	);
 }
 
