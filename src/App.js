@@ -1,8 +1,54 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+	const [value, setValue] = useState("Save Change");
+	
+	function changeValue() {
+		setValue(value === "Save Change" ? "Revert Change" : "Save Change");
+	}
+	
+	return (
+		<div className="App">
+			<div>
+				<img src={logo} height="50px" width="50px" alt="React Logo"/>
+				<h4><b>Super Converter</b></h4>
+			</div>
+			<ChooseConverter />
+			<MemorizedCustomButton text={value} onClick={changeValue} big={true} fontSize={18}/>
+			<MemorizedCustomButton text="Continue" big={false} fontSize={16}/>
+		</div>
+	);
+}
+
+function Timer() {
+	const [timer, setTimer] = useState("00:00:00");
+	
+	const date = new Date();
+	const currentTimer = () => {
+		const hours = String(date.getHours());
+		const mins = String(date.getMinuites());
+		const secs = String(date.getSeconds());
+		setTimer('${hours}:{mins}:{secs}')
+	}
+	
+	function refresh() {
+		setInterval(currentTimer, 1000);
+	}
+	
+	refresh();
+	
+	return (
+		<div>
+			<p>Timer : {timer}</p>
+			<button onClick={refresh}>Refresh Timer</button>
+		</div>
+	);
+}
+
+function ChooseConverter() {
 	const [index, setIndex] = useState("xx");
 	
 	function onSelectChange(event) {
@@ -10,8 +56,7 @@ function App() {
 	}
 	
 	return (
-		<div className="App">
-			<h4>Super Converter</h4>
+		<div>
 			<select onChange={onSelectChange}>
 				<option value="xx">Select your units</option>
 				<option value="0">Minutes to Hours</option>
@@ -22,27 +67,37 @@ function App() {
 			{index === "0" ? <MinutesToHours /> : null}
 			{index === "1" ? <KmToMiles/> : null}
 			<hr />
-			<CustomButton banana="Save Changes" big={true}/>
-			<CustomButton banana="Continue" big={false}/>
 		</div>
 	);
 }
 
+// * React Memo
+// 이제 App 컴포넌트에서 state 변경 때마다 CustomButton 컴포넌트 들이 모두 다시 랜더링 되지 않고, 필요한 요소만 랜더링 함
+const MemorizedCustomButton = React.memo(CustomButton);
+
+// 안타깝게도 chrome://inspect 에서는 type check warning 안 해주는 것 같음. 
+CustomButton.PropTypes = {
+	text: PropTypes.string.isRequired,
+	big: PropTypes.bool,
+	fonSize: PropTypes.number,
+}
+
 // function CustomButton(props) {
-function CustomButton({banana, big}) {
-	console.log(banana, big);
+function CustomButton({text, onClick, big, fontSize}) {
+	console.log(text, "was rendered");
 	return (
 		<button 
+			onClick={onClick}
 			style= {{
 				backgroundColor: "tomato",
 				color: "white",
-				padding: "10px 20px",
+				padding: big ? "20px 30px" : "10px 20px",
 				border: 0,
-				borderRadius: big ? 20 : 10,
-				fontSize : big ? 18 : 16,
+				borderRadius: 20,
+				fontSize : {fontSize},
 			}}
 		>
-			{banana}
+			{text}
 		</button>
 	);
 }
