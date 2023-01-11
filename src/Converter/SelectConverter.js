@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
+import TimeConverter from './TimeConverter.js';
+import DistanceConverter from './DistanceConverter.js';
+import PropTypes from 'prop-types';
 
-function SelectConverter() {
-	const [value, setValue] = useState(0);
+const MemoTimeConv = React.memo(TimeConverter);
+const MemoDistConv = React.memo(DistanceConverter);
+
+SelectConverter.PropTypes = {
+	lock: PropTypes.bool.isRequired,
+}
+
+function SelectConverter({lock}) {
+	const [value, setValue] = useState("0");
 	
 	function changeValue(event) {
 		setValue(event.target.value);
@@ -11,14 +21,16 @@ function SelectConverter() {
 		<div>
 			<div className="SelectSection">
 				<select onChange={changeValue}>
-					<option value={0}>Select Unit System to Convert</option>
-					<option value={1}>Time Unit System</option>
-					<option value={2}>Distance Unit Syste</option>
+					<option value="0">Select Unit System to Convert</option>
+					<option value="1">Time Unit System</option>
+					<option value="2">Distance Unit System</option>
 				</select>
 			</div>
 			<hr/>
 			<div className="ConveterSection">
-				<h4>{value}</h4>
+				{value === "0" ? "Please Select Unit System" : null}
+				{value === "1" ? <MemoTimeConv lock={lock}/> : null}
+				{value === "2" ? <MemoDistConv lock={lock}/> : null}
 			</div>
 			<hr/>
 		</div>
