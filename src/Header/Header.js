@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import logo from '../logo.svg';
 import styles from './Header.module.css';
 
 function Header() {
 	return (
-		<div className={styles.style}>
+		<div className={styles.header}>
 			<img src={logo} alt="logo" className={styles.image}/>
 			<h4>Super Converter</h4>
 		</div>

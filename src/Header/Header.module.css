@@ -1,0 +1,13 @@
+.header {
+	background-color: black;
+	color: white;
+	font-family: bold;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	margin-bottom: 20px;
+}
+
+.image {
+	height: 50px;
+	width: 50px;
+}
