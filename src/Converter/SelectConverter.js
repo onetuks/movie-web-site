@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import TimeConverter from './TimeConverter.js';
-import DistanceConverter from './DistanceConverter.js';
-import PropTypes from 'prop-types';
+import Converter from './Converter.js';
+import propTypes from 'prop-types';
 
-const MemoTimeConv = React.memo(TimeConverter);
-const MemoDistConv = React.memo(DistanceConverter);
-
-SelectConverter.PropTypes = {
-	lock: PropTypes.bool.isRequired,
+SelectConverter.propTypes = {
+	lock: propTypes.bool.isRequired,
+	resetReq : propTypes.bool,
 }
 
-function SelectConverter({lock}) {
+function SelectConverter({lock, resetReq}) {
 	const [value, setValue] = useState("0");
 	
 	function changeValue(event) {
@@ -28,9 +25,7 @@ function SelectConverter({lock}) {
 			</div>
 			<hr/>
 			<div className="ConveterSection">
-				{value === "0" ? "Please Select Unit System" : null}
-				{value === "1" ? <MemoTimeConv lock={lock}/> : null}
-				{value === "2" ? <MemoDistConv lock={lock}/> : null}
+				{value === "0" ? "Please Select Unit System" : <Converter type={value} lock={lock} resetReq={resetReq}/>}
 			</div>
 			<hr/>
 		</div>
