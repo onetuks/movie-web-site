@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../logo.svg';
-import Movie from '../Movie.js';
+import Movie from '../Components/Movie.js';
 import PropTypes from 'prop-types';
 
 // PropTypes 선언
