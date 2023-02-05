@@ -1,17 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../logo.svg';
 import Movie from '../Components/Movie.js';
-import PropTypes from 'prop-types';
-
-// PropTypes 선언
-// 컴포넌트명.propTypes = {}
-Movie.propTypes = {
-	id: PropTypes.string,
-	coverImg: PropTypes.string.isRequired,
-	title: PropTypes.string.isRequired,
-	summary: PropTypes.string.isRequired,
-	genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-}
 
 function Home() {
 	const [movies, setMovies] = useState([]);
@@ -47,6 +36,7 @@ function Home() {
 						{movies.movies.map((movie) => (
 							<Movie
 								key={movie.id}
+								id={movie.id}
 								coverImg={movie.medium_cover_image}
 								title={movie.title}
 								summary={movie.summary}
