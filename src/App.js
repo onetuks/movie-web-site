@@ -15,8 +15,6 @@ import {
 	- route 사용하기 위함
 */
 function App() {
-	console.log("App Component rendered");
-	
 	return (
 		<Router>
 			<Routes>

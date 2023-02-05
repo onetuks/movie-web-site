@@ -21,8 +21,6 @@ function Home() {
 
 	// getMovies 함수 > state change func 두 개가 있기 때문에 새로 랜더링 할 때마다 두 번 실행됨.
 	// console.log(movies);
-	
-	console.log("Home Component rendered");
 
 	return (
 		<div className="App">

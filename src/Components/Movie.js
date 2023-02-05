@@ -13,9 +13,6 @@ Movie.propTypes = {
 }
 
 function Movie({ id, coverImg, title, summary, genres }) {
-	
-	console.log("Movie Component rendered");
-	
 	// react-router-dom > Link
 	// a 태그랑 동일한 동작을 하되, 전체 렌더링되지 않는다는게 차이점.
 	
