@@ -1,7 +1,7 @@
 {
   "main.css": "/MovieWebSite/static/css/main.6fed2b63.chunk.css",
-  "main.js": "/MovieWebSite/static/js/main.4c7a51a2.chunk.js",
-  "main.js.map": "/MovieWebSite/static/js/main.4c7a51a2.chunk.js.map",
+  "main.js": "/MovieWebSite/static/js/main.7bf709cf.chunk.js",
+  "main.js.map": "/MovieWebSite/static/js/main.7bf709cf.chunk.js.map",
   "static/js/1.728556b7.chunk.js": "/MovieWebSite/static/js/1.728556b7.chunk.js",
   "static/js/1.728556b7.chunk.js.map": "/MovieWebSite/static/js/1.728556b7.chunk.js.map",
   "runtime~main.js": "/MovieWebSite/static/js/runtime~main.11ab9f8f.js",
@@ -9,6 +9,6 @@
   "static/media/logo.svg": "/MovieWebSite/static/media/logo.5d5d9eef.svg",
   "static/css/main.6fed2b63.chunk.css.map": "/MovieWebSite/static/css/main.6fed2b63.chunk.css.map",
   "index.html": "/MovieWebSite/index.html",
-  "precache-manifest.0af79ff1eb7bb8852470b9d20bbd9f8d.js": "/MovieWebSite/precache-manifest.0af79ff1eb7bb8852470b9d20bbd9f8d.js",
+  "precache-manifest.5f96e9e816ad68e5dd3a0a244b963d51.js": "/MovieWebSite/precache-manifest.5f96e9e816ad68e5dd3a0a244b963d51.js",
   "service-worker.js": "/MovieWebSite/service-worker.js"
 }
