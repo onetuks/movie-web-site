@@ -30,8 +30,6 @@ function Movie({ id, coverImg, title, summary, genres }) {
 					<li key={idx}>{gen}</li>
 				))}
 			</ul>
-			<br />
-			<br />
 		</div>
 	);
 }

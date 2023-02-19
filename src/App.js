@@ -16,11 +16,11 @@ import {
 */
 function App() {
 	return (
-		<Router>
+		<Router basename={process.env.PUBLIC_ULR}>
 			<Routes>
-				<Route path="/" element={<Home />}/>
-				<Route path="/movie/:id" element={<Detail />} />
-				<Route path="/hello" element={<h3>Hello</h3>} />
+				<Route path={`${process.env.PUBLIC_URL}/`} element={<Home count={3} />}/>
+				<Route path={`${process.env.PUBLIC_URL}/movie/:id`} element={<Detail />} />
+				<Route path={`${process.env.PUBLIC_URL}/hello`} element={<h3>Hello</h3>} />
 			</Routes>
 		</Router>
 	);
