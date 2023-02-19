@@ -15,12 +15,13 @@ import {
 	- route 사용하기 위함
 */
 function App() {
+	const url = process.env.PUBLIC_URL;
 	return (
-		<Router basename={process.env.PUBLIC_ULR}>
+		<Router basename={url}>
 			<Routes>
-				<Route path={`${process.env.PUBLIC_URL}/`} element={<Home count={3} />}/>
-				<Route path={`${process.env.PUBLIC_URL}/movie/:id`} element={<Detail />} />
-				<Route path={`${process.env.PUBLIC_URL}/hello`} element={<h3>Hello</h3>} />
+				<Route path={`${url}/`} element={<Home count={3} />}/>
+				<Route path={`${url}/movie/:id`} element={<Detail />} />
+				<Route path={`${url}/hello`} element={<h3>Hello</h3>} />
 			</Routes>
 		</Router>
 	);
