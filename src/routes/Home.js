@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import logo from '../logo.svg';
 import Movie from '../Components/Movie.js';
 import style from './Home.module.css';
+import bucketImg from '../bucket.svg';
 
 function Home({ count }) {
 	const [loading, setLoading] = useState(true);
 	const [movies, setMovies] = useState([]);
+	const [bucketItems, setBucketItems] = useState([]);
 	
 	const getMovies = async () => {
 		const json = await (
@@ -25,17 +27,38 @@ function Home({ count }) {
 		}
 	}, [loading]);
 	
+	const addBucket = (event) => {
+		setBucketItems([event.target.alt, ...bucketItems]);
+	};
+	
+	const removeBucket = (event) => {
+		console.log("bucket item removed");
+	};
+	
+	const resetBucekt = () => {
+		setBucketItems([]);
+	};
+
+	const getDefaultImg = (event) => {
+		event.target.src = logo;
+	};
+	
 	// getMovies 함수 > state change func 두 개가 있기 때문에 새로 랜더링 할 때마다 두 번 실행됨.
 	// console.log("Movies : ", Movies);
 	// console.log("Movies : ", movies);
 
 	return (
 		<div className={style.container}>
-			<div className="Header">
-				<h3>Movie Bucket</h3>
+			<div className={style.bucket}>
+				<h3 style={{ textAlign: "center", marginBottom: '50px' }}>Movie Bucket</h3>
+				{bucketItems.map((bucketItem, index) => (
+					<div className={style.bucket_item}>
+						<img key={index} src={bucketItem} alt={index} onError={getDefaultImg}/>
+					</div>
+				))}
 			</div>
-			<hr className="Line"/>
-			<div className="Body">
+			<hr className={style.line}/>
+			<div className={style.body}>
 				{loading ? (
 					<div className={style.loader}>
 						<span>Loading...</span>
@@ -44,6 +67,7 @@ function Home({ count }) {
 					<div className={style.movies}>
 						{movies.map((movie, index) => (
 							<div key={index}>
+								<img src={bucketImg} alt={movie.small_cover_image} onClick={addBucket} className={style.btn_bucket}/>
 								<Movie
 									key={movie.id}
 									id={movie.id}

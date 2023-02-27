@@ -2,14 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import style from './Movie.module.css';
+import logo from '../logo.svg';
 
 function Movie({ id, coverImg, title, year, summary, genres }) {
 	// react-router-dom > Link
 	// a 태그랑 동일한 동작을 하되, 전체 렌더링되지 않는다는게 차이점.
 	
+	function getDefaultImg(event) {
+		event.target.src = logo;
+	}
+	
 	return (
 		<div className={style.movie}>
-			<img src={coverImg} alt={id} className={style.movie_img}></img>
+			<img src={coverImg} alt={id} onError={getDefaultImg} className={style.movie_img}/>
 			<div>
 				<h2 className={style.movie_title}>
 					<Link to={`/movie/${id}`}>{title}</Link>
@@ -37,17 +42,3 @@ Movie.propTypes = {
 	summary: PropTypes.string.isRequired,
 	genres: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
-
-/*
-<h2>
-				<a href={`/movie/${id}`}>a    tag : {title}</a>
-				<br/>
-				<Link to={`/movie/${id}`}>link tag : {title}</Link>
-			</h2>
-			<p>{summary}</p>
-			<ul>
-				{genres.map((gen, idx) => (
-					<li key={idx}>{gen}</li>
-				))}
-			</ul>
-*/

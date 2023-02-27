@@ -1,7 +1,29 @@
 .container {
+	background-color: #3D5656;
 	height: 100%;
 	display: flex;
 	justify-content: center;
+}
+
+.li_bucket {
+	width: 10%;
+	display: grid;
+	grid-template-columns: minmax(100px, 1fr);
+	grid-gap: 100px;
+	justify-content: center;
+}
+
+.bucket_item {
+	text-align: center;
+}
+
+.line {
+	width: 2px;
+	background-color: yellow;
+}
+
+.body {
+	width: 90%;
 }
 
 .loader {
@@ -14,12 +36,22 @@
 }
 
 .movies {
+	background-color: #68B984;
 	display: grid;
 	grid-template-columns: repeat(2, minmax(400px, 1fr));
 	grid-gap: 100px;
 	padding: 50px;
 	width: 80%;
 	padding-top: 70px;
+}
+
+.btn_bucket {
+	position: relative;
+	top: 0px;
+	left: 180px;
+	width: 20px;
+	background-color: yellow;
+	border-radius: 5px;
 }
 
 @media screen and (max-width: 1090px) {
